@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Desert Safari &amp; Buggy · Horse Luxury Group</title>
+<link rel="icon" href="img/logo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-page="safari">
+<header class="hero"><div class="bg ph" data-img="img/hero-safari.jpg" data-g="sand"></div><div class="wrap">
+  <div class="eyebrow reveal">Horse Luxury Buggy Dubai · Since 2017</div>
+  <h1 class="reveal">The golden dunes, <em>your way.</em></h1>
+  <p class="lead reveal">Evening safaris with BBQ and live shows, a private camp with villa and pool, and Can-Am, Polaris and Yamaha buggies and quads. Our camp is known across the U.A.E. for its professionalism and honesty.</p>
+  <div class="cta reveal"><a class="btn gold" href="#book">Book the desert</a><a class="btn ghost" href="#buggy">Buggies & quads</a></div>
+</div></header>
+
+<section><div class="wrap">
+  <div class="head reveal"><div><div class="eyebrow">Safari packages</div><h2>Two ways to do the desert.</h2></div></div>
+  <div class="pk">
+    <div class="pkc reveal"><div class="ph" data-img="img/safari/tourist.jpg" data-g="sand"></div><div class="tx">
+      <div class="eyebrow">Most popular</div><h3>Safari Tourist</h3>
+      <ul><li>Pick-up and drop-off at your hotel</li><li>Dune bashing in a 4x4 (30 min)</li><li>BBQ and buffet dinner at the camp</li><li>Belly dance, Tanoura and fire shows</li><li>Camel ride</li><li>Starts around 3 pm, ends around 8 pm</li></ul>
+      <div class="prices"><div><b>250 AED</b><span>Adult</span></div><div><b>150 AED</b><span>Child</span></div><div><b>Free</b><span>Under 4</span></div></div>
+      <div><a class="btn" href="#book" data-pk="tourist">Book Safari Tourist</a></div></div></div>
+    <div class="pkc reveal"><div class="ph" data-img="img/safari/camp-private.jpg" data-g="red"></div><div class="tx">
+      <div class="eyebrow">Exclusive</div><h3>Camp Private</h3>
+      <ul><li>24-hour private access to the camp</li><li>Villa and swimming pool, just for your group</li><li>Perfect for birthdays, events and video shoots</li><li>Optional buffet, BBQ, drinks and shisha</li></ul>
+      <div class="prices"><div><b>3,000 AED</b><span>Camp · 24 h</span></div><div><b>+400 AED</b><span>Food · adult</span></div><div><b>+200 AED</b><span>Food · child</span></div></div>
+      <div><a class="btn" href="#book" data-pk="camp">Book Camp Private</a></div></div></div>
+  </div>
+</div></section>
+
+<section class="alt" id="buggy"><div class="wrap">
+  <div class="head reveal"><div><div class="eyebrow">Buggies & quads</div><h2>Drive the dunes yourself.</h2></div><p>All vehicles are meticulously maintained. Guided tours with our SUV drivers, falcons and camels on the way, and an evening at the camp to finish.</p></div>
+  <div class="grid3">
+    <div class="card reveal"><div class="img ph" data-img="img/safari/canam.jpg" data-g="sand"><span class="tag">Buggy</span></div><div class="body"><h3>Can-Am Buggy</h3><div class="spec">UTV · guided dune tour</div><div class="row"><div class="price"><b style="font-size:19px">Price on request</b></div><a class="btn sm" data-ask="Can-Am buggy">Ask</a></div></div></div>
+    <div class="card reveal"><div class="img ph" data-img="img/safari/polaris.jpg" data-g="sand"><span class="tag">Buggy</span></div><div class="body"><h3>Polaris Buggy</h3><div class="spec">UTV · guided dune tour</div><div class="row"><div class="price"><b style="font-size:19px">Price on request</b></div><a class="btn sm" data-ask="Polaris buggy">Ask</a></div></div></div>
+    <div class="card reveal"><div class="img ph" data-img="img/safari/quad.jpg" data-g="sand"><span class="tag">Quad</span></div><div class="body"><h3>Yamaha Raptor Quad</h3><div class="spec">ATV · guided dune tour</div><div class="row"><div class="price"><b style="font-size:19px">Price on request</b></div><a class="btn sm" data-ask="Yamaha Raptor quad">Ask</a></div></div></div>
+  </div>
+</div></section>
+
+<section id="book"><div class="wrap split">
+  <div class="reveal"><div class="eyebrow">Book the desert</div><h2>See your price before you send.</h2><p>Choose a package and your group size. The total updates instantly, and your request goes to our team on WhatsApp.</p></div>
+  <div class="form reveal">
+    <div class="full"><label class="lb">Package</label><select id="fPk"><option value="tourist">Safari Tourist</option><option value="camp">Camp Private (24 h)</option><option value="campfood">Camp Private + buffet, BBQ, drinks, shisha</option><option value="buggy">Buggy / quad tour (price on request)</option></select></div>
+    <div><label class="lb">Date</label><input type="date" id="fDate"></div>
+    <div><label class="lb">Hotel pick-up</label><input id="fHotel" placeholder="Hotel or address"></div>
+    <div><label class="lb">Adults</label><input type="number" id="fA" min="1" value="2"></div>
+    <div><label class="lb">Children (4+)</label><input type="number" id="fC" min="0" value="0"></div>
+    <div class="total"><span id="estL"></span><b id="estV"></b></div>
+    <button class="btn gold full" id="send" style="padding:17px">Send request on WhatsApp</button>
+  </div>
+</div></section>
+<script src="assets/site.js"></script>
+<script>
+const NAMES = { tourist: "Safari Tourist", camp: "Camp Private (24 h)", campfood: "Camp Private + food package", buggy: "Buggy / quad tour" };
+function total() { const a = Math.max(1, +$("fA").value || 1), c = Math.max(0, +$("fC").value || 0), p = $("fPk").value;
+  return p === "tourist" ? a * 250 + c * 150 : p === "camp" ? 3000 : p === "campfood" ? 3000 + a * 400 + c * 200 : 0; }
+function calc() { const t = total(), a = +$("fA").value || 1, c = +$("fC").value || 0;
+  $("estL").textContent = t ? `${a} adult${a > 1 ? "s" : ""}${c ? ` + ${c} child${c > 1 ? "ren" : ""}` : ""}` : "Price confirmed on WhatsApp";
+  $("estV").textContent = t ? "AED " + fmt(t) : "On request"; }
+$("fDate").value = new Date(Date.now() + 864e5).toISOString().slice(0, 10); $("fDate").min = new Date().toISOString().slice(0, 10);
+["fPk", "fA", "fC"].forEach(id => $(id).addEventListener("input", calc)); calc();
+document.querySelectorAll("[data-pk]").forEach(b => b.onclick = () => { $("fPk").value = b.dataset.pk; calc(); });
+document.querySelectorAll("[data-ask]").forEach(b => { b.href = wa(`Hello Horse Luxury Buggy! What is the price for the ${b.dataset.ask}?`); b.target = "_blank"; });
+$("send").onclick = () => { const t = total();
+  openWa(["Hello Horse Luxury Buggy! Booking request:", `Package: ${NAMES[$("fPk").value]}`, `Date: ${$("fDate").value}`, `Adults: ${$("fA").value}, children: ${$("fC").value}`,
+    `Pick-up: ${$("fHotel").value || "-"}`, t ? `Website total: AED ${fmt(t)}` : ""].filter(Boolean).join("\n")); };
+ready();
+</script>
+</body></html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Car Rental · Horse Luxury Group</title>
+<link rel="icon" href="img/logo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-page="cars">
+<header class="hero"><div class="bg ph" data-img="img/hero-cars.jpg" data-g="car"></div><div class="wrap">
+  <div class="eyebrow reveal">Horse Luxury Car Rental Dubai · Since 2014</div>
+  <h1 class="reveal">Supercars, SUVs <em>and chauffeurs.</em></h1>
+  <p class="lead reveal">Delivered to your hotel or the airport. Self-drive or with a private driver, with a no-deposit option and 250 km included every day.</p>
+  <div class="cta reveal"><a class="btn" href="#book">Book a car</a><a class="btn ghost" href="#chauffeur">VIP chauffeur</a></div>
+</div></header>
+
+<section id="fleet"><div class="wrap">
+  <div class="head reveal"><div><div class="eyebrow">Self-drive fleet</div><h2>Pick your drive.</h2></div><div class="filters" id="filters"></div></div>
+  <div class="grid4" id="cars"></div>
+  <p class="note">More brands on request: Rolls-Royce, Bentley, Lamborghini, McLaren, Maserati, Porsche, Land Rover, Cadillac and more.</p>
+</div></section>
+
+<section class="alt" id="chauffeur"><div class="wrap">
+  <div class="head reveal"><div><h2>VIP chauffeur</h2></div><p>Price per day includes the car with driver for 10 hours, Salik, petrol and parking fees. Security deposit: 0 AED.</p></div>
+  <div class="grid4" id="chauf"></div>
+  <p class="note">Extra hour: 250 AED · 250 km per day, extra km 10 AED · Also available: GMC Yukon, Chevrolet Tahoe, BMW X7, Range Rover Vogue, BMW 740i, Bentley Flying Spur · Bookings over 3 days: ask for prices · Prices exclude 5% VAT.</p>
+</div></section>
+
+<section id="book"><div class="wrap split">
+  <div class="reveal"><div class="eyebrow">Booking request</div><h2>Ten quick answers and your car is reserved.</h2><p>These are the details our team needs for every rental. Fill them once and they arrive on WhatsApp as one clear request. We confirm availability and the final price right away.</p></div>
+  <div class="form reveal">
+    <div class="full"><label class="lb">Which car do you prefer?</label><select id="fCar"></select></div>
+    <div><label class="lb">On which date?</label><input type="date" id="fDate"></div>
+    <div><label class="lb">At what time?</label><input type="time" id="fTime" value="10:00"></div>
+    <div><label class="lb">How many days?</label><input type="number" id="fDays" min="1" value="2"></div>
+    <div><label class="lb">Your age</label><input type="number" id="fAge" min="18" placeholder="25+"></div>
+    <div class="full"><label class="lb">Where do you want the delivery?</label><input id="fWhere" placeholder="Hotel, address or airport"></div>
+    <div><label class="lb">Passport nationality</label><input id="fPass" placeholder="e.g. French"></div>
+    <div><label class="lb">Driving licence country</label><input id="fLic" placeholder="e.g. France"></div>
+    <div><label class="lb">Deposit payment</label><select id="fDep"><option>Credit card</option><option>Cash</option><option>No-deposit option</option></select></div>
+    <div><label class="lb">Abu Dhabi or Oman trip?</label><select id="fTrip"><option>No, staying in Dubai</option><option>Abu Dhabi</option><option>Oman</option></select></div>
+    <div class="total"><span id="estL">Estimate</span><b id="estV">—</b></div>
+    <button class="btn full" id="send" style="padding:17px">Send booking request on WhatsApp</button>
+  </div>
+</div></section>
+
+<section class="alt"><div class="wrap">
+  <div class="head reveal"><div><div class="eyebrow">Good to know</div><h2>Rental conditions.</h2></div></div>
+  <ul class="terms reveal">
+    <li>Minimum age 25 (insurance requirement).</li>
+    <li>Tourists: passport and driving licence (front and back). Residents: Emirates ID and driving licence.</li>
+    <li>250 km included per day. Extra kilometres: 20 AED each.</li>
+    <li>No-deposit option available for a small non-refundable fee that depends on the car (for example 300 AED for the Mercedes G63).</li>
+    <li>Full payment on delivery, in cash (AED) or by credit card (3% fee, 5% for Amex). Bitcoin and other crypto accepted.</li>
+    <li>Prices exclude 5% VAT.</li>
+    <li>Non-smoking cars only. A 1,500 AED cleaning fee applies otherwise.</li>
+    <li>Original driving licence and passport are checked on delivery.</li>
+    <li>Any breakdown: message us on WhatsApp with your location and we send a replacement car of the same category.</li>
+    <li>Cancelling a booking forfeits the reservation deposit.</li>
+  </ul>
+</div></section>
+<script src="assets/site.js"></script>
+<script>
+let filter = "All";
+const priceHtml = p => p ? `<b>AED ${fmt(p)}</b> <span>/ day</span>` : `<b style="font-size:19px">Price on request</b>`;
+function fleet() {
+  const cats = ["All", ...new Set(DATA.cars.map(c => c.cat))];
+  $("filters").innerHTML = cats.map(c => `<button class="${c === filter ? "on" : ""}">${c}</button>`).join("");
+  $("filters").querySelectorAll("button").forEach(b => b.onclick = () => { filter = b.textContent; fleet(); paint(); });
+  $("cars").innerHTML = DATA.cars.map((c, i) => `<div class="card ${filter !== "All" && c.cat !== filter ? "hide" : ""}"><div class="img ph" data-img="${c.img}"><span class="tag">${c.cat}</span></div>
+    <div class="body"><h3>${c.name}</h3><div class="spec">${c.color} · self-drive or with driver</div><div class="row"><div class="price">${priceHtml(c.price)}</div><a class="btn sm" href="#book" data-v="s${i}">Book</a></div></div></div>`).join("");
+  $("cars").querySelectorAll(".btn").forEach(b => b.onclick = () => { $("fCar").value = b.dataset.v; calc(); });
+}
+fleet();
+$("chauf").innerHTML = DATA.chauffeur.map((c, i) => `<div class="card"><div class="img ph" data-img="${c.img}"><span class="tag">With driver · 10 h</span></div>
+  <div class="body"><h3>${c.name}</h3><div class="spec">${c.spec}</div><div class="row"><div class="price">${priceHtml(c.price)}</div><a class="btn sm" href="#book" data-v="c${i}">Book</a></div></div></div>`).join("");
+$("chauf").querySelectorAll(".btn").forEach(b => b.onclick = () => { $("fCar").value = b.dataset.v; calc(); });
+$("fCar").innerHTML = `<optgroup label="Self-drive">${DATA.cars.map((c, i) => `<option value="s${i}">${c.name} (${c.color})</option>`).join("")}</optgroup><optgroup label="VIP chauffeur (driver 10 h)">${DATA.chauffeur.map((c, i) => `<option value="c${i}">${c.name} with driver · AED ${fmt(c.price)}/day</option>`).join("")}</optgroup><option value="x">Another car (tell us on WhatsApp)</option>`;
+const pick = () => { const v = $("fCar").value; return v === "x" ? null : (v[0] === "s" ? DATA.cars : DATA.chauffeur)[+v.slice(1)]; };
+function calc() { const c = pick(), d = Math.max(1, +$("fDays").value || 1);
+  if (c && c.price) { $("estL").textContent = `${d} day${d > 1 ? "s" : ""} × AED ${fmt(c.price)} (excl. 5% VAT)`; $("estV").textContent = "AED " + fmt(d * c.price); }
+  else { $("estL").textContent = "Price confirmed on WhatsApp"; $("estV").textContent = "On request"; } }
+$("fDate").value = new Date(Date.now() + 864e5).toISOString().slice(0, 10); $("fDate").min = new Date().toISOString().slice(0, 10);
+["fCar", "fDays"].forEach(id => $(id).addEventListener("input", calc)); calc();
+$("send").onclick = () => { const c = pick(), v = $("fCar").value, d = Math.max(1, +$("fDays").value || 1);
+  openWa(["Hello Horse Luxury! Booking request:",
+    `Car: ${c ? c.name + (v[0] === "c" ? " with driver" : ` (${c.color})`) : "another car, please advise"}`,
+    `Date: ${$("fDate").value} at ${$("fTime").value}`, `Days: ${d}`, `Delivery: ${$("fWhere").value || "-"}`, `Age: ${$("fAge").value || "-"}`,
+    `Passport nationality: ${$("fPass").value || "-"}`, `Driving licence: ${$("fLic").value || "-"}`, `Deposit: ${$("fDep").value}`, `Abu Dhabi / Oman: ${$("fTrip").value}`,
+    c && c.price ? `Website estimate: AED ${fmt(d * c.price)} excl. VAT` : ""].filter(Boolean).join("\n")); };
+ready();
+</script>
+</body></html>

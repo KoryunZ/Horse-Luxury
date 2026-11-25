@@ -1,0 +1,13 @@
+Save their photos with exactly these names (jpg, landscape). Missing ones show a gradient.
+
+img/hero-home.jpg  hero-cars.jpg  hero-safari.jpg  hero-concierge.jpg
+img/div-cars.jpg  div-safari.jpg  div-concierge.jpg  div-realestate.jpg   (portrait works best)
+
+img/cars/      g63-white.jpg  gle63s-black.jpg  bmw-xm-black.jpg  sq7-grey.jpg
+               purosangue-white.jpg  roma-spider-black.jpg  rs6-grey.jpg  rs3-blue.jpg
+img/chauffeur/ ghost.jpg  s500.jpg  v250.jpg  escalade.jpg
+img/safari/    tourist.jpg  camp-private.jpg  canam.jpg  polaris.jpg  quad.jpg
+img/yachts/    blue-yonder-skipper.jpg  cruiser-ammos.jpg  pershing.jpg  carmen.jpg
+               lina.jpg  sanlorenzo.jpg  lady-maia.jpg  mega.jpg
+
+Car prices: open assets/site.js and set "price" for each car (0 = "Price on request").

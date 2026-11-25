@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Concierge · Horse Luxury Group</title>
+<link rel="icon" href="img/logo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-page="concierge">
+<header class="hero"><div class="bg ph" data-img="img/hero-concierge.jpg" data-g="sea"></div><div class="wrap">
+  <div class="eyebrow reveal">Horse Luxury Concierge Dubai</div>
+  <h1 class="reveal">Everything Dubai offers, <em>one message away.</em></h1>
+  <p class="lead reveal">Yachts, jet skis, helicopters, villas, shows and more. We take care of everything, tailored entirely to your preferences.</p>
+  <div class="cta reveal"><a class="btn" href="#yachts">Yachts</a><a class="btn gold" href="#nautic">Water sports</a><a class="btn ghost" href="#exp">All experiences</a></div>
+</div></header>
+
+<section id="yachts"><div class="wrap">
+  <div class="head reveal"><div><div class="eyebrow">Yacht charters</div><h2>From 40 to 141 feet.</h2></div><p>Priced per hour. Tap a yacht to check availability for your date.</p></div>
+  <div class="grid4" id="yg"></div>
+</div></section>
+
+<section class="alt" id="nautic"><div class="wrap">
+  <div class="head reveal"><div><div class="eyebrow">Nautic</div><h2>On the water.</h2></div><p>Prices per person. Tap any activity to book it.</p></div>
+  <div class="plist reveal" id="ng"></div>
+</div></section>
+
+<section id="exp"><div class="wrap">
+  <div class="head reveal"><div><div class="eyebrow">Experiences</div><h2>Pick what you want. We arrange it.</h2></div><p>Select as many as you like, then send them all in one request.</p></div>
+  <div class="tiles reveal" id="tg"></div>
+  <div class="cta" style="margin-top:28px;align-items:center"><button class="btn" id="sendSel">Send my selection on WhatsApp</button><span class="note" id="selN" style="margin:0"></span></div>
+</div></section>
+
+<section class="alt"><div class="wrap split">
+  <div class="reveal"><div class="eyebrow">Also from the group</div><h2>Need a car or a driver too?</h2><p>Rolls-Royce Ghost, Mercedes S500, V250 Falcon and Cadillac Escalade with chauffeur from 2,300 AED per day, or a self-drive supercar delivered to your door.</p></div>
+  <div class="reveal cta" style="align-self:center"><a class="btn" href="cars.html#chauffeur">VIP chauffeur</a><a class="btn ghost" href="cars.html">Self-drive fleet</a><a class="btn ghost" href="safari.html">Desert safari</a></div>
+</div></section>
+<script src="assets/site.js"></script>
+<script>
+const slug = s => s.toLowerCase().normalize("NFD").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+$("yg").innerHTML = DATA.yachts.map(y => `<div class="card reveal" style="cursor:pointer" data-y="${y.name}"><div class="img ph" data-img="img/yachts/${slug(y.name)}.jpg" data-g="sea"><span class="tag">${y.ft} ft</span></div>
+  <div class="body"><h3>${y.name}</h3><div class="spec">${y.ft} feet · up to ${y.cap} guests</div><div class="row"><div class="price"><b>AED ${fmt(y.price)}</b> <span>/ hour</span></div><span class="btn sm">Book</span></div></div></div>`).join("");
+$("yg").querySelectorAll(".card").forEach(c => c.onclick = () => openWa(`Hello Horse Luxury Concierge! I'd like to book the yacht ${c.dataset.y}. Date and hours: `));
+$("ng").innerHTML = DATA.nautic.map(([n, d, p]) => `<div class="pl" data-n="${n}"><span class="n">${n}<small>${d}</small></span><span class="d"></span><span class="p">${fmt(p)} AED <span>/ person</span></span></div>`).join("");
+$("ng").querySelectorAll(".pl").forEach(el => el.onclick = () => openWa(`Hello Horse Luxury Concierge! I'd like to book: ${el.dataset.n}. Date and number of people: `));
+const sel = new Set();
+$("tg").innerHTML = DATA.experiences.map(([n, i]) => `<div class="tile" data-n="${n}"><i>${i}</i>${n}</div>`).join("");
+const upd = () => $("selN").textContent = sel.size ? `${sel.size} selected` : "Nothing selected yet";
+$("tg").querySelectorAll(".tile").forEach(t => t.onclick = () => { const n = t.dataset.n; sel.has(n) ? sel.delete(n) : sel.add(n);
+  t.style.borderColor = sel.has(n) ? "var(--gold)" : ""; t.style.color = sel.has(n) ? "var(--gold)" : ""; t.style.background = sel.has(n) ? "#211c14" : ""; upd(); });
+upd();
+$("sendSel").onclick = () => openWa(sel.size ? `Hello Horse Luxury Concierge! I'm interested in:\n- ${[...sel].join("\n- ")}\nDates: ` : "Hello Horse Luxury Concierge! I'd like help planning my stay in Dubai.");
+ready();
+</script>
+</body></html>
